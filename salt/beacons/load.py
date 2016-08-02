@@ -64,15 +64,11 @@ def beacon(config):
     if config['onchangeonly']:
         # Emit if current is more that threshold and old value less that threshold
         if int(cpu_percent) > int(config['max']) and int(LAST_STATUS) != int(cpu_percent):
-            log.debug('Emit because {0} > {1} and last was {2}'.format(int(cpu_percent),
-
-int(config['max']), int(LAST_STATUS)))
+            log.debug('Emit because {0} > {1} and last was {2}'.format(int(cpu_percent), int(config['max']), int(LAST_STATUS)))
             send_beacon = True
         # Emit if current is less that threshold and old value more that threshold
         if int(cpu_percent) < int(config['min']) and int(LAST_STATUS) != int(cpu_percent):
-            log.debug('Emit because {0} < {1} and last was {2}'.format(int(cpu_percent),
-
-int(config['min']), int(LAST_STATUS)))
+            log.debug('Emit because {0} < {1} and last was {2}'.format(int(cpu_percent), int(config['min']), int(LAST_STATUS)))
             send_beacon = True
     else:
         # Emit no matter LAST_STATUS
